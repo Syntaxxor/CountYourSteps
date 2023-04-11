@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://7rgi7holavy"]
+
+[ext_resource type="PackedScene" uid="uid://bgrk66wyyg246" path="res://objects/Floor.tscn" id="1_d2w2d"]
+[ext_resource type="PackedScene" uid="uid://ccv22yjcs4wwg" path="res://objects/Die.tscn" id="2_unhpd"]
+[ext_resource type="PackedScene" uid="uid://ufrbp1is4s3o" path="res://objects/Goal.tscn" id="3_nummy"]
+[ext_resource type="Texture2D" uid="uid://bd025eto3dub1" path="res://textures/arrowkeys.png" id="4_rggrg"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_d2w2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 8, -2, 0, -6)
+
+[node name="Die" parent="." instance=ExtResource("2_unhpd")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1, 1, 7)
+
+[node name="Goal" parent="." instance=ExtResource("3_nummy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+level = "res://levels/Level2.tscn"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.433013, -0.25, 0, -0.5, 0.866025, -0.5, -0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 9)
+extents = Vector3(0.802627, 1, 0.53496)
+texture_albedo = ExtResource("4_rggrg")

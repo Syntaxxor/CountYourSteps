@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cg3lkgci857d8"]
+
+[ext_resource type="Script" path="res://scripts/Pickup.gd" id="1_1jxm8"]
+[ext_resource type="FontFile" uid="uid://yj7efuqmfjts" path="res://fonts/arial.ttf" id="2_xv2an"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1nb51"]
+size = Vector3(2, 0.2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oisbb"]
+transparency = 1
+albedo_color = Color(0, 0.707056, 1, 0.501961)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wglqk"]
+material = SubResource("StandardMaterial3D_oisbb")
+size = Vector3(2, 0.1, 2)
+
+[node name="Pickup" type="StaticBody3D" groups=["pickup"]]
+script = ExtResource("1_1jxm8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1nb51")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+double_sided = false
+render_priority = 2
+outline_render_priority = 1
+text = "+2"
+font = ExtResource("2_xv2an")
+font_size = 64
+outline_size = 16
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("BoxMesh_wglqk")

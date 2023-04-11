@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://q0x57cx8okkl"]
+
+[ext_resource type="Theme" uid="uid://bjoabmskqtboa" path="res://MainTheme.tres" id="1_0wf0p"]
+
+[sub_resource type="GDScript" id="GDScript_5sr72"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_quit_pressed():
+	get_tree().quit()
+"
+
+[node name="Finish" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1_0wf0p")
+script = SubResource("GDScript_5sr72")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.25098, 0.227451, 0.227451, 1)
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -232.0
+offset_right = 187.0
+offset_bottom = -174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Thanks for playing!"
+horizontal_alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="Label2" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -110.0
+offset_right = 512.0
+offset_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 32
+text = "A game by Rhapsody
+Puzzles by Rhapsody and Gadget
+Wood material from ambientcg.com
+Special thanks: Trixie, Lavii, and Chris."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_layout_mode = 1
+
+[node name="Quit" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -104.0
+offset_right = 31.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Quit"
+metadata/_edit_layout_mode = 1
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

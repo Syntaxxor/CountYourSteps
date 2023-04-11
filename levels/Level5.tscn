@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq8aw1fqlntp5"]
+
+[ext_resource type="PackedScene" uid="uid://bgrk66wyyg246" path="res://objects/Floor.tscn" id="1_lvugt"]
+[ext_resource type="PackedScene" uid="uid://ccv22yjcs4wwg" path="res://objects/Die.tscn" id="2_7fnu3"]
+[ext_resource type="PackedScene" uid="uid://ufrbp1is4s3o" path="res://objects/Goal.tscn" id="3_yn2lt"]
+[ext_resource type="PackedScene" uid="uid://cg3lkgci857d8" path="res://objects/Pickup.tscn" id="4_7vbkv"]
+
+[node name="Level5" type="Node3D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_lvugt")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="Floor4" parent="." instance=ExtResource("1_lvugt")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="Floor3" parent="." instance=ExtResource("1_lvugt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, 6, 0, -8)
+
+[node name="Floor7" parent="." instance=ExtResource("1_lvugt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -2, 0, -6)
+
+[node name="Floor6" parent="." instance=ExtResource("1_lvugt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 7, -6, 0, -14)
+
+[node name="Floor5" parent="." instance=ExtResource("1_lvugt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, 6, 0, -8)
+
+[node name="Die" parent="." instance=ExtResource("2_7fnu3")]
+transform = Transform3D(1, -1.77822e-07, -1.03316e-07, 1.03316e-07, -3.95368e-22, 1, -1.77822e-07, -1, -2.58934e-15, 1, 1, 1)
+
+[node name="Goal" parent="." instance=ExtResource("3_yn2lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
+level = "res://levels/Level6.tscn"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.683013, -0.183013, 0, 0.258819, 0.965926, 0.707107, -0.683013, 0.183013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Pickup" parent="." instance=ExtResource("4_7vbkv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
+
+[node name="Pickup2" parent="." instance=ExtResource("4_7vbkv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)

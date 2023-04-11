@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwwj7t18jhgke"]
+
+[ext_resource type="Theme" uid="uid://bjoabmskqtboa" path="res://MainTheme.tres" id="1_hmnm1"]
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="2_ci5vq"]
+[ext_resource type="PackedScene" uid="uid://bgrk66wyyg246" path="res://objects/Floor.tscn" id="3_8kn31"]
+[ext_resource type="Shader" path="res://shaders/backgroundblur.gdshader" id="3_eewd1"]
+[ext_resource type="PackedScene" uid="uid://duoup8q6bfpsc" path="res://mesh/die.glb" id="4_7yuot"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_daf3c"]
+shader = ExtResource("3_eewd1")
+shader_param/blur_lod = null
+shader_param/blur_rad = null
+
+[node name="MenuScene" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1_hmnm1")
+script = ExtResource("2_ci5vq")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Menu"]
+material = SubResource("ShaderMaterial_daf3c")
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.768627, 0.768627, 0.768627, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.5
+offset_top = -168.0
+offset_right = 195.5
+offset_bottom = -108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Count Your Steps"
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_layout_mode = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = 24.0
+offset_right = 55.5
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="StartGame" type="Button" parent="CanvasLayer/Menu/HBoxContainer"]
+offset_right = 168.0
+offset_bottom = 43.0
+text = "Start Game"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Menu/HBoxContainer"]
+offset_top = 47.0
+offset_right = 168.0
+offset_bottom = 90.0
+text = "Quit"
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Menu/HBoxContainer"]
+offset_top = 94.0
+offset_right = 168.0
+offset_bottom = 137.0
+text = "Fullscreen"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.707107, 0.561736, -0.42948, 0, 0.607376, 0.794415, 0.707107, 0.561736, -0.42948, -2, 11.45, -2)
+fov = 55.4
+
+[node name="Floor" parent="." instance=ExtResource("3_8kn31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0)
+
+[node name="Floor2" parent="." instance=ExtResource("3_8kn31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 6, 10, 0, 0)
+
+[node name="Floor3" parent="." instance=ExtResource("3_8kn31")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Floor4" parent="." instance=ExtResource("3_8kn31")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10)
+
+[node name="die" parent="." instance=ExtResource("4_7yuot")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 11, 1, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.524519, -0.779339, -0.342798, -0.353553, -0.56565, 0.74501, -0.774519, -0.269575, -0.572232, 0, 0, 0)
+shadow_enabled = true
+
+[connection signal="pressed" from="CanvasLayer/Menu/HBoxContainer/StartGame" to="CanvasLayer/Menu" method="start_game"]
+[connection signal="pressed" from="CanvasLayer/Menu/HBoxContainer/Quit" to="CanvasLayer/Menu" method="quit_game"]
+[connection signal="toggled" from="CanvasLayer/Menu/HBoxContainer/CheckBox" to="CanvasLayer/Menu" method="toggle_fullscreen"]

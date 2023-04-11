@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ufrbp1is4s3o"]
+
+[ext_resource type="Script" path="res://scripts/Goal.gd" id="1_mau2v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyeko"]
+size = Vector3(2, 0.2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0445l"]
+transparency = 1
+albedo_color = Color(0, 1, 0.145098, 0.501961)
+
+[sub_resource type="BoxMesh" id="BoxMesh_px3xo"]
+material = SubResource("StandardMaterial3D_0445l")
+size = Vector3(2, 0.1, 2)
+
+[node name="Goal" type="StaticBody3D" groups=["goal"]]
+script = ExtResource("1_mau2v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yyeko")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("BoxMesh_px3xo")
